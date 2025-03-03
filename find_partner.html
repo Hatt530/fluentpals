@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find a Partner</title>
+</head>
+<body>
+    <h1>Choose a Language Partner</h1>
+    <ul>
+        {% for partner in partners %}
+        <li>
+            <h3>{{ partner.name }} - {{ partner.language }}</h3>
+            <p>Activity: {{ partner.activity }}</p>
+            <p>Minimum Donation: ${{ partner.donation }}</p>
+            <form action="/book" method="POST">
+                <input type="hidden" name="name" value="{{ partner.name }}">
+                <input type="hidden" name="language" value="{{ partner.language }}">
+                <input type="hidden" name="donation" value="{{ partner.donation }}">
+                <button type="submit">Book Session</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
